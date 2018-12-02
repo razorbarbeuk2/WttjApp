@@ -1,0 +1,42 @@
+$grey-color: #31333b;
+$green-color: #00c29a;
+
+body{
+  background: red;
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  list-style: none;
+}
+
+.app-header{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  align-items: center;
+  justify-content: space-between;
+  background: $grey-color;
+  padding: 10px;
+  .nav-arrow ul{
+    margin-right: 20px;
+  }
+  .nav-arrow ul li{
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: #4b4d55;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 55px;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    &:first-child{
+      margin-right: 20px;
+    }
+  }
+}
