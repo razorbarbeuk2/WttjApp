@@ -1,5 +1,6 @@
 $grey-color: #31333b;
 $green-color: #00c29a;
+$grey-line: #4b4d55;
 
 body{
   background: red;
@@ -58,4 +59,25 @@ ul{
   height: 100%;
   width: 100%;
   overflow-y: scroll;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  width: 100%;
+  height: 75px;
+  background: $grey-color;
+  .footer-line{
+    position: relative;
+    height: 6px;
+    width: 100%;
+    background: $grey-line;
+    &:after{
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 6px;
+      background: $green-color;
+    }
+  }
 }
