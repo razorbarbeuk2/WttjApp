@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Arrow from './Arrow';
-import './styles/App.scss';
-import Logo from './assets/images/wttj-square_green.jpg';
-
+import Logo from './../assets/images/wttj-square_green.jpg';
 
 export default class Header extends Component {
     render() {
