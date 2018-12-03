@@ -34,9 +34,13 @@ ul{
     vertical-align: middle;
     margin: 0;
     padding: 0;
+    transition: background .2s;
     cursor: pointer;
     &:first-child{
       margin-right: 20px;
+    }
+    &:hover{
+      background: $green-color;
     }
   }
 }
