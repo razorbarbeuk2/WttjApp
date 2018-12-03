@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/App.scss';
 import Header from './components/Header'
 import ViewContainer from './components/ViewContainer';
+import ViewContainer from './components/Footer';
 import Data from './Data';
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
     return (
         <React.Fragment>
           <Header />
-          <ViewContainer data={Data}/>
+          <ViewContainer data={Data} />
+          <Footer />
         </React.Fragment>
     );
   }
