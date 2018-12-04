@@ -1,15 +1,18 @@
-$grey-color: #31333b;
+$grey-color: rgb(27, 28, 32);
 $green-color: #00c29a;
 $grey-line: #4b4d55;
 $grid-row: calc(25%-175);
+$width-window: 850px;
+$height-window: 700px;
 
 body{
-  background: red;
-  height: 100%;
-  width: 100%;
-  margin: 0;
+  position: relative;
+  background: white;
+  max-width: $width-window;
+  max-height: $height-window;
+  margin: 0 auto;
   padding: 0;
-  // overflow-y: hidden;
+  overflow: hidden;
 }
 
 ul{
@@ -17,35 +20,36 @@ ul{
 }
 
 .app-header{
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  width:100%;
-  height: 100px;
-  align-items: center;
-  justify-content: space-between;
+  position: relative;
+  width: 100%;
   background: $grey-color;
-  padding-left:10px;
-  padding-right:10px;
   z-index:1000;
+  .header-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    height: 50px;
+  }
   .nav-arrow ul{
-    margin-right: 20px;
+    margin-right: 5px;
   }
   .nav-arrow ul li{
     display: inline-block;
-    width: 48px;
-    height: 48px;
+    width: 30px;
+    height: 30px;
     background: #4b4d55;
     border-radius: 50%;
+    line-height: 30px;
     text-align: center;
-    line-height: 55px;
     vertical-align: middle;
     margin: 0;
     padding: 0;
     transition: background .2s;
     cursor: pointer;
     &:first-child{
-      margin-right: 20px;
+      margin-right: 10px;
     }
     &:hover{
       background: $green-color;
@@ -55,44 +59,46 @@ ul{
 
 .view-container{
   position: relative;
-  top: 100px;
-  height: calc(100vh - 175px);
+  width: 100%;
+  height: calc(700px - 110px);
+  overflow: hidden;
   // overflow-x: scroll;
   // overflow-y: hidden;
   .grid-container{
     display: grid;
-    height: calc(100vh - 175px);
-    grid-template-columns: repeat(10, 33.3333%);
+    height: 100%;
+    width: 101%;
     grid-template-rows: repeat(2, 50%);
     grid-auto-columns: 50%;
     grid-auto-flow: column;
-    .image-container{
+    overflow-x: scroll;
+    .image-container, .video-container, .quote-container{
       display: block;
       width: 100%;
       height: 100%;
+      background-position: center center;
       background-size: cover;
       // overflow: hidden;
     }
   }
-  
 }
 
 footer{
-  position:fixed;
+  position: absolute;
   bottom:0;
   width: 100%;
-  height: 75px;
+  height: 50px;
   background: $grey-color;
   .footer-line{
     position: relative;
-    height: 6px;
+    height: 4px;
     width: 100%;
     background: $grey-line;
     &:after{
       content: '';
       position: absolute;
       width: 50%;
-      height: 6px;
+      height: 4px;
       background: $green-color;
     }
   }

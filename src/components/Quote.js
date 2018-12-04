@@ -5,7 +5,7 @@ export default class Quote extends Component{
     render(){
         const { src } = this.props
         return(
-            <img className="image-container" src={ src } alt={ 'toto' }></img>
+            <img className="quote-container" src={ src } alt={ 'toto' }></img>
         )   
     }
 }
