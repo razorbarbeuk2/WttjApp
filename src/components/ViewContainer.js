@@ -6,8 +6,12 @@ import Video from './Video';
 export default class ViewContainer extends Component {
     render(){
         const { data } = this.props
+        const gridContainerStyle = {
+            gridTemplateColumns: 'repeat('+ data.length +', 33.3333%)'
+        }
         return (
             <section className="view-container">
+                <div className="grid-container" style={gridContainerStyle}>
                 {
                     data.map((t, index) => {
                         switch (t.type) {
@@ -22,6 +26,7 @@ export default class ViewContainer extends Component {
                         }
                     })
                 }
+                </div>
             </section>
         )
     }

@@ -22,5 +22,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "react-swipe": "^6.0.3",
+    "swipe-js-iso": "^2.1.4"
+  }
 }
