@@ -68,7 +68,6 @@ ul{
     display: grid;
     height: 100%;
     width: 101%;
-    // grid-template-rows: repeat(2, 50%);
     grid-auto-columns: 50%;
     grid-auto-flow: column;
     overflow-x: scroll;

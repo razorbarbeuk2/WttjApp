@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { initPos } from '../redux/actions/moveScreen';
 import Image from './Image';
 import Quote from './Quote';
 import Video from './Video';
 
-export default class ViewContainer extends Component {
+const calculatePosition = (gridWidth, offsetView) => {
+    console.log("Hello calculate")
+    let iterator = 0
+    let tabPos = []
+    tabPos.push(iterator)
+    while (iterator < gridWidth){
+        iterator += offsetView
+        tabPos.push(iterator)
+    }
+    tabPos.push(gridWidth)
+    return tabPos
+}
+
+class ViewContainer extends Component {
     constructor(props){
         super(props)
 
@@ -16,19 +30,20 @@ export default class ViewContainer extends Component {
             colGridWidth: 0,
             rowGridWidth: 0
         }
-
     }
 
     componentDidMount(){
         this.gridWidth = document.getElementById('grid').offsetWidth
         this.viewWidth = document.getElementById('viewContainer').offsetWidth
+        this.props.onInitPos(this.gridWidth, 0, calculatePosition(this.gridWidth, this.viewWidth), this.scrollX)
     }
 
     onDown = (e) => {
         console.log('Down');
         if(!this.isHandle){
             this.setState({
-                isHandle: true
+                isHandle: true,
+                scrollPosition: 0
             })
         }
     }
@@ -46,7 +61,6 @@ export default class ViewContainer extends Component {
         if (!this.isHandle)
             return ;
         const {left, top} = this.extractPositionDelta(e);
-        console.log(left);
         this.setState({
             scrollX: left
         })
@@ -85,4 +99,17 @@ export default class ViewContainer extends Component {
             </section>
             )
         }
+}
+
+const mapStateToProps = (state) => ({
+    scrollX: state.moveReducer.scrollPos
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    onInitPos: (gridWidth, index, tabPos, scrollPos) => {
+        dispatch(initPos(gridWidth, index, tabPos, scrollPos))
     }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewContainer)
+

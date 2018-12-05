@@ -1,9 +1,14 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from './redux/reducers'
 import './styles/App.scss';
 import Header from './components/Header'
-import ViewContainer from './components/ViewContainer';
-import Footer from './components/Footer';
-import Data from './Data';
+import ViewContainer from './components/ViewContainer'
+import Footer from './components/Footer'
+import Data from './Data'
+
+const store = createStore(rootReducer)
 
 class App extends PureComponent {
   constructor(props){
@@ -55,11 +60,13 @@ class App extends PureComponent {
 
   render() {
     return (
+      <Provider store={store}>
         <React.Fragment>
           <Header />
           <ViewContainer data={Data} col={this.state.colNumber} row={this.state.rowNUmber}/>
           <Footer />
         </React.Fragment>
+      </Provider>
     );
   }
 }
