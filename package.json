@@ -24,6 +24,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "prop-types": "^15.6.2",
     "react-redux": "^6.0.0",
     "react-swipe": "^6.0.3",
     "react-swipeable-views": "^0.13.0",
