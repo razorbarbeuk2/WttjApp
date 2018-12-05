@@ -13,14 +13,15 @@ export default class ViewContainer extends Component {
             scrollX: 0,
             gridWidth: 0,
             viewWidth: 0,
-            colGridWdth: 0
+            colGridWidth: 0,
+            rowGridWidth: 0
         }
+
     }
 
     componentDidMount(){
         this.gridWidth = document.getElementById('grid').offsetWidth
         this.viewWidth = document.getElementById('viewContainer').offsetWidth
-        const { col, row } = this.props
     }
 
     onDown = (e) => {
@@ -54,10 +55,14 @@ export default class ViewContainer extends Component {
     
     
     render(){
-        const { data, col } = this.props
+        const { data, col, row } = this.props
+        
         this.colGridWdth = 100/col;
+        this.rowGridWidth = 100/row;
+        
         const gridContainerStyle = {
-            gridTemplateColumns: 'repeat('+ data.length +', '+ this.colGridWdth +'%)'
+            gridTemplateColumns: 'repeat('+ data.length +', '+ this.colGridWdth +'%)',
+            gridTemplateRows: 'repeat('+ row +', '+ this.rowGridWidth +'%)'
         }
         return (
             <section id="viewContainer" className="view-container">
