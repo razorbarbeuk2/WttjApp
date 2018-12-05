@@ -5,33 +5,78 @@ import Quote from './Quote';
 import Video from './Video';
 
 export default class ViewContainer extends Component {
+    constructor(props){
+        super(props)
 
+        this.state = {
+            isHandle: false,
+            scrollX: 0,
+            gridWidth: 0,
+            viewWidth: 0,
+            colGridWdth: 0
+        }
+    }
+
+    componentDidMount(){
+        this.gridWidth = document.getElementById('grid').offsetWidth
+        this.viewWidth = document.getElementById('viewContainer').offsetWidth
+        const { col, row } = this.props
+    }
+
+    onDown = (e) => {
+        console.log('Down');
+        if(!this.isHandle){
+            this.setState({
+                isHandle: true
+            })
+        }
+    }
+
+    onUp = (e) => {
+        console.log('Up');
+        if(this.isHandle){
+            this.setState({
+                isHandle: false
+            })
+        }
+    }
+
+    onMove = (e) => {
+        if (!this.isHandle)
+            return ;
+        const {left, top} = this.extractPositionDelta(e);
+        console.log(left);
+        this.setState({
+            scrollX: left
+        })
+        this.myRef.scrollTo(this.scrollX)
+    }
     
     
     render(){
         const { data, col } = this.props
-        
+        this.colGridWdth = 100/col;
         const gridContainerStyle = {
-            gridTemplateColumns: 'repeat('+ data.length +', 33.333333%)'
+            gridTemplateColumns: 'repeat('+ data.length +', '+ this.colGridWdth +'%)'
         }
         return (
-            <section ref={this.refCallback} className="view-container">
-            <div className="grid-container" style={gridContainerStyle} ref={this.attachScroller} onMouseDown={this.onScroll} onScroll={this.onMouseMove}>
-            {
-                data.map((t, index) => {
-                    switch (t.type) {
-                        case 'image': 
-                            return <Image src={t.value} key={index}/>
-                        case 'video': 
-                            return <Video src={t.value} key={index}/>
-                        case 'quote':
-                            return <Quote text={t.value} key={index}/>
-                        default: 
-                            return <Image src="https://media.giphy.com/media/3o85xwxr06YNoFdSbm/giphy.gif" key={index}/>
-                    }
-                })
-            }
-            </div>
+            <section id="viewContainer" className="view-container">
+                <div id="grid" className="grid-container" style={gridContainerStyle} onMouseDown={(e) => this.onDown(e)} onMouseUp={(e) => this.onUp(e)} onMouseMove={(e) => this.onMove(e)} ref={this.myRef}>
+                {
+                    data.map((t, index) => {
+                        switch (t.type) {
+                            case 'image': 
+                                return <Image src={t.value} key={index}/>
+                            case 'video': 
+                                return <Video src={t.value} key={index}/>
+                            case 'quote':
+                                return <Quote text={t.value} key={index}/>
+                            default: 
+                                return <Image src="https://media.giphy.com/media/3o85xwxr06YNoFdSbm/giphy.gif" key={index}/>
+                        }
+                    })
+                }
+                </div>
             </section>
             )
         }

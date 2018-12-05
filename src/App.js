@@ -10,7 +10,7 @@ class App extends Component {
     return (
         <React.Fragment>
           <Header />
-          <ViewContainer data={Data} />
+          <ViewContainer data={Data} col={4} />
           <Footer />
         </React.Fragment>
     );
