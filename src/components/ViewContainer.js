@@ -43,8 +43,7 @@ class ViewContainer extends Component {
     }
 
     componentDidUpdate(){
-        const { index, tabPos, scrollPos } = this.props
-        console.log('POS: ' + index)
+        const { index, tabPos } = this.props
         document.getElementById('grid').scroll({
             top: 0, 
             left: tabPos[index],
@@ -53,7 +52,7 @@ class ViewContainer extends Component {
     }
     
     render(){
-        const { data, col, row, device, index } = this.props
+        const { data, col, row, device } = this.props
         
         this.colGridWdth = 100/col;
         this.rowGridWidth = 100/row;
@@ -62,7 +61,7 @@ class ViewContainer extends Component {
             heightContainerStyle.minHeight = 'calc(100vh - 110px)'
             
         const gridContainerStyle = {
-            gridTemplateColumns: 'repeat('+ data.length +', '+ this.colGridWdth +'%)',
+            gridTemplateColumns: 'repeat('+ data.images.length +', '+ this.colGridWdth +'%)',
             gridTemplateRows: 'repeat('+ row +', '+ this.rowGridWidth +'%)'
         }
         
@@ -79,7 +78,7 @@ class ViewContainer extends Component {
                     // ref={this.grid}
                 >
                 {
-                    data.map((t, index) => {
+                    data.images.map((t, index) => {
                         switch (t.type) {
                             case 'image': 
                                 return <Image src={t.value} key={index}/>
@@ -99,7 +98,7 @@ class ViewContainer extends Component {
 }
 
 ViewContainer.propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.object,
     device: PropTypes.string,
     col: PropTypes.number,
     row: PropTypes.number,

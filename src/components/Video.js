@@ -10,6 +10,9 @@ export default class Video extends Component{
         return(
             <div className="video-container" style={ImgStyle}>
                 <div className="background-content" style={ImgStyle}></div>
+                <div className="play-container">
+
+                </div>
             </div>
         )   
     }

@@ -1,7 +1,9 @@
 
 const prefixe = "https://cdn.welcometothejungle.co/uploads/"
 
-const data = [
+const data = {
+    title: 'Welcome to the Jungle',
+    images : [
     {
         id: 1, 
         type: 'image',
@@ -152,6 +154,6 @@ const data = [
         title: '',
         value: 'ut labore et dolore magna aliqua'
     }
-]
+]}
 
 export default data

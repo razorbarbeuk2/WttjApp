@@ -6,7 +6,7 @@ import './styles/App.scss';
 import Header from './components/Header'
 import ViewContainer from './components/ViewContainer'
 import Footer from './components/Footer'
-import Data from './Data'
+import data  from './Data'
 
 const store = createStore(rootReducer)
 
@@ -61,8 +61,8 @@ class App extends PureComponent {
     return (
       <Provider store={store}>
         <React.Fragment>
-          <Header />
-          <ViewContainer data={Data} col={this.state.colNumber} row={this.state.rowNumber} device={this.state.device}/>
+          <Header title={data.title}/>
+          <ViewContainer data={data} col={this.state.colNumber} row={this.state.rowNumber} device={this.state.device}/>
           <Footer />
         </React.Fragment>
       </Provider>

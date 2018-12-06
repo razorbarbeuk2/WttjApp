@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Arrow from './Arrow';
-import Logo from './../assets/images/wttj-square_green.jpg';
+import logo from '../../src/assets/images/wttj-square_green.jpg'
 import { moveLeft, moveRight, onImpose } from '../redux/actions/moveScreen';
 
 const RIGHT = 'right'
@@ -51,10 +51,15 @@ class Header extends Component {
     }
 
     render() {
+        const { title } = this.props
+
         return (
                 <header className="app-header">
                     <div className="header-container">
-                        <img src={Logo} width={50} height={50} alt="Logo"/>
+                        <div>
+                            <img src={logo} width={50} height={50} alt="Logo"/>
+                            <span className="title">{title}</span>    
+                        </div>
                         <div className="nav-arrow">
                             <ul>
                                 <li onClick={(e) => this.moveLeft(e)}>
@@ -72,6 +77,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
+    title: PropTypes.string,
     gridWidth: PropTypes.number,
     scrollPos: PropTypes.number,
     index: PropTypes.number,
