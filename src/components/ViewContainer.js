@@ -19,6 +19,7 @@ const calculatePosition = (gridWidth, offsetView) => {
 }
 
 class ViewContainer extends Component {
+
     constructor(props){
         super(props)
 
@@ -35,15 +36,15 @@ class ViewContainer extends Component {
     componentDidMount(){
         this.setState({
             gridWidth: document.getElementById('grid').scrollWidth,
-            viewWidth: document.getElementById('viewContainer').clientWidth,
+            viewWidth: document.getElementById('viewContainer').clientWidth
         }, () => {
             this.props.onInitPos(this.state.gridWidth, 0, calculatePosition(this.state.gridWidth, this.state.viewWidth), 0)
         })
     }
 
     componentDidUpdate(){
-        const { index, tabPos, scrollPos } = this.props
-        console.log('Pos: ' + index)
+        const { index, tabPos } = this.props
+        // console.log('Pos: ' + index)
         document.getElementById('grid').scroll({
             top: 0, 
             left: tabPos[index],
@@ -83,15 +84,17 @@ class ViewContainer extends Component {
         //     scrollX: left
         // })
         // this.myRef.scrollTo(this.scrollX)
-    }
-    
+    }    
     
     render(){
-        const { data, col, row } = this.props
+        const { data, col, row, device } = this.props
         
         this.colGridWdth = 100/col;
         this.rowGridWidth = 100/row;
-        
+        const heightContainerStyle = {minHeight: 'calc(700px - 110px)'}
+        if(device === 'xs' || device === 'sm')
+            heightContainerStyle.minHeight = 'calc(100vh - 110px)'
+            
         const gridContainerStyle = {
             gridTemplateColumns: 'repeat('+ data.length +', '+ this.colGridWdth +'%)',
             gridTemplateRows: 'repeat('+ row +', '+ this.rowGridWidth +'%)'
@@ -103,7 +106,7 @@ class ViewContainer extends Component {
                 <div 
                     id="grid" 
                     className="grid-container" 
-                    style={gridContainerStyle} 
+                    style={{...heightContainerStyle, ...gridContainerStyle}} 
                     onMouseDown={(e) => this.onDown(e)} 
                     onMouseUp={(e) => this.onUp(e)} 
                     onMouseMove={(e) => this.onMove(e)}
@@ -132,6 +135,7 @@ class ViewContainer extends Component {
 
 ViewContainer.propTypes = {
     data: PropTypes.array,
+    device: PropTypes.string,
     col: PropTypes.number,
     row: PropTypes.number,
     index: PropTypes.number,
@@ -141,7 +145,7 @@ ViewContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     const { scrollPos, index, tabPos } = state.moveReducer
-    console.log('State: '+ index)
+    // console.log('State: '+ index)
     return {
         index,
         tabPos,

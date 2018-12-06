@@ -8,7 +8,9 @@ export default class Image extends Component{
             backgroundImage: 'url(' + src + ')',
         } 
         return(
-            <div className="image-container" style={ImgStyle}></div>
+            <div className="image-container" >
+                <div className="background-content" style={ImgStyle}></div>
+            </div>
         )   
     }
 }

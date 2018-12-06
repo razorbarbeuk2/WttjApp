@@ -17,18 +17,19 @@ class App extends PureComponent {
     this.state = {
       device: '',
       colNumber: 0,
-      rowNUmber: 0
+      rowNumber: 0
     }
     this._updateDevice = this._updateDevice.bind(this)
-
+    this._updateDeviceCol = this._updateDeviceCol.bind(this)
   }
 
   componentWillMount(){
-    this._updateDevice();
+    this._updateDevice()
+    window.addEventListener("resize", this._updateDevice);
   }
 
-  componentDidMount(){
-    window.addEventListener("resize", this._updateDevice);
+  componentWillUpdate(){
+    this._updateDevice()
   }
 
   componentWillUnmount(){
@@ -37,24 +38,22 @@ class App extends PureComponent {
 
   _updateDevice(){
     let body = document.body.offsetWidth;
-    if (body < 575.98)
-      this.setState({ device : 'xs' })
-    else if (body < 767.98)
-      this.setState({ device : 'sm' })
-    else if (body < 991.98)
-      this.setState({ device : 'md' })
-    else if (body < 1199.98)
-      this.setState({ device : 'lg' })
-    else 
-      this.setState({ device : 'xl' })
-    this._updateDeviceCol();  
+    let size;
+    if (body < 575.98) size = 'xs'
+    else if (body < 767.98) size = 'sm'
+    else if (body < 991.98) size = 'md'
+    else if (body < 1199.98) size = 'lg'
+    else size = 'xl'
+    this.setState({device: size}, () => {
+      this._updateDeviceCol()
+    })
   }
 
   _updateDeviceCol(){
     if(this.state.device === 'xs' || this.state.device === 'sm')
-      this.setState({ colNumber: 1, rowNUmber: 1 })
+        this.setState({ colNumber: 1, rowNumber: 1 })
     else
-      this.setState({ colNumber: 3, rowNUmber: 2 })
+        this.setState({ colNumber: 3, rowNumber: 2 })
     return ;
   }
 
@@ -63,7 +62,7 @@ class App extends PureComponent {
       <Provider store={store}>
         <React.Fragment>
           <Header />
-          <ViewContainer data={Data} col={this.state.colNumber} row={this.state.rowNUmber}/>
+          <ViewContainer data={Data} col={this.state.colNumber} row={this.state.rowNumber} device={this.state.device}/>
           <Footer />
         </React.Fragment>
       </Provider>

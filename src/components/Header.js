@@ -17,7 +17,7 @@ const posLost = (scrollPos, tabPos, dir) => {
     while (index < tabPos.length) {
         if(scrollPos === tabPos[index])
             return index
-        if(scrollPos > tabPos[index] && scrollPos < (tabPos[index] + tabPos[1])){
+        if(scrollPos > tabPos[index]){
             // console.log('BITCH')
             break;
         }
@@ -25,7 +25,7 @@ const posLost = (scrollPos, tabPos, dir) => {
         
     }
     if ((dir === LEFT) && (scrollPos > tabPos[index]  && scrollPos > Math.round(tabPos[index] + middlePos))){
-        console.log('INDEX :' )
+        // console.log('INDEX :' )
         return index + 1
     }
     if ((dir === RIGHT) && (tabPos[index] < scrollPos && scrollPos < tabPos[index + 1]))
@@ -34,19 +34,15 @@ const posLost = (scrollPos, tabPos, dir) => {
 }
 
 class Header extends Component {
-    constructor(props){
-        super(props)
-    }
-
     moveLeft = (e) => {
-        const { index, tabPos, gridWidth } = this.props
+        const { index, tabPos } = this.props
         let scrollPos = document.getElementById('grid').scrollLeft
         if(scrollPos > 0){
             let value = posLost(scrollPos, tabPos, LEFT)
-            console.log('Value :' + value)
+            // console.log('Value :' + value)
             if (value > 0)
                 this.props.onImposeIndex(value)
-            if (index > 0)    
+            if (index > 0) 
                 this.props.onMoveLeft()
         }
         e.preventDefault()
@@ -104,11 +100,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     onMoveLeft: () => {
-        console.log('LEFT')
+        // console.log('LEFT')
         dispatch(moveLeft())
     },
     onMoveRight: () => {
-        console.log('RIGHT')
+        // console.log('RIGHT')
         dispatch(moveRight())
     },
     onImposeIndex: (index) => {

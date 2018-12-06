@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">body {
+  position: relative;
+  background: white;
+  max-width: 850px;
+  max-height: 700px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden; }
+
+ul {
+  list-style: none; }
+
+.app-header {
+  position: relative;
+  width: 100%;
+  background: #1b1c20;
+  z-index: 1000; }
+  .app-header .header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    height: 50px; }
+  .app-header .nav-arrow ul {
+    margin-right: 5px; }
+  .app-header .nav-arrow ul li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #4b4d55;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+    cursor: pointer; }
+    .app-header .nav-arrow ul li:first-child {
+      margin-right: 10px; }
+    .app-header .nav-arrow ul li:hover {
+      background: #00c29a; }
+
+.view-container {
+  position: relative;
+  width: 100%;
+  height: calc(700px - 110px);
+  overflow: hidden; }
+  .view-container .grid-container {
+    display: grid;
+    height: 100%;
+    width: 101%;
+    grid-auto-columns: 50%;
+    grid-auto-flow: column;
+    overflow-x: scroll; }
+    .view-container .grid-container .image-container, .view-container .grid-container .video-container, .view-container .grid-container .quote-container {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      overflow: hidden; }
+      .view-container .grid-container .image-container .background-content, .view-container .grid-container .video-container .background-content, .view-container .grid-container .quote-container .background-content {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-size: cover;
+        -webkit-transition: all .5s;
+        transition: all .5s; }
+      .view-container .grid-container .image-container:hover, .view-container .grid-container .video-container:hover, .view-container .grid-container .quote-container:hover {
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2); }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #1b1c20; }
+  footer .footer-line {
+    position: relative;
+    height: 4px;
+    width: 100%;
+    background: #4b4d55; }
+    footer .footer-line:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: #00c29a; }
+</style><script charset="utf-8" src="./React App_files/main.ffe29f030cc6a50efec0.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.c9ef9d9154be8a6d7e37.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.ab7ace8d0f42285a5024.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.ad4f7cb90db04fbbb6dd.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.8a99cd23159ddec64f2f.hot-update.js"></script></head>
+  <body cz-shortcut-listen="true">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"><header class="app-header"><div class="header-container"><img src="./React App_files/wttj-square_green.5e2238cc.jpg" width="50" height="50" alt="Logo"><div class="nav-arrow"><ul><li><svg height="10" width="10" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1"><polyline fill="none" points="8.5 11.5 2.5 6 8.5 0.5" stroke="#FFFFFF" stroke-linecap="round"></polyline></g></svg></li><li><svg height="10" width="10" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1"><polyline fill="none" points="3.5 0.5 9.5 6 3.5 11.5" stroke="#FFFFFF" stroke-linecap="round"></polyline></g></svg></li></ul></div></div></header><section id="viewContainer" class="view-container"><div id="grid" class="grid-container" style="grid-template-columns: 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333% 33.3333%; grid-template-rows: 50% 50%;"><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7217/151601/small_wttj-jobs_2d663949-83f4-486c-be79-b7d199de4216.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7206/151601/small_wttj-offres-emploi_170aa579-aa26-4cf8-838c-9d68d4da6c32.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7223/151601/small_wttj-jobs_360f6eb8-26e1-42aa-a3ee-837c3767b734.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7240/151601/small_wttj-jobs_a1aa5500-1287-47f8-8fda-efc32a627451.jpg&quot;);"></div></div><div class="video-container" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg&quot;);"></div><div class="video-container" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/video/image/1540/151603/small_wttj_video_267f7b56-911e-4888-9721-085e83f9f479.jpg&quot;);"></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7234/151601/small_wttj-inside_d42c7877-b765-4da3-ba05-f93e9c56c02b.jpg&quot;);"></div></div><div class="video-container" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/video/image/1702/151603/small_wttj_video_c9575808-fd3a-4571-95ef-873af73be887.jpg&quot;);"></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7260/151601/small_wttj-jobs_d358d6ec-89f7-4761-8d59-98408857dc08.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7263/151601/small_wttj-offres-emploi_c8b64f4a-e281-4303-b453-c4158a2aa19f.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7252/151601/small_wttj-jobs_b3bbd3a7-0c09-403a-a446-9f29d0b09c3f.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7214/151601/small_wttj-annonces_d8d26d42-e764-4b3b-af34-2cdf25936ee1.jpg&quot;);"></div></div><div class="video-container" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/video/image/9401/151602/small_wttj_video_3bbaeeb9-2f2f-4a1b-ac14-e6be495d3bb4.jpg&quot;);"></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7266/151601/small_wttj-annonces_296b33a2-ae75-439f-82fa-25d75fff45ae.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7210/151601/small_wttj-recrutement_c29a2f2d-68f7-489a-9a39-dd9f4ee39848.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7255/151601/small_wttj-jobs_acea4610-1ecd-4089-ad21-bc4121a66570.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7220/151601/small_wttj-annonces_fde76898-d6a4-4540-af78-f26ec06ba201.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7257/151601/small_wttj-inside_e1444930-ad09-436d-a907-74cdbf7f821a.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7245/151601/small_wttj-offres-emploi_7647c1d8-8699-46c7-955d-ad8e131dd231.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7229/151601/small_wttj-jobs_5dd0c775-397f-4462-911b-6e43b37effe7.jpg&quot;);"></div></div><div class="image-container"><div class="background-content" style="background-image: url(&quot;https://cdn.welcometothejungle.co/uploads/image/file/7242/151601/small_wttj-inside_06571833-82ab-42e7-8fe2-0f004ecf79c8.jpg&quot;);"></div></div><img class="quote-container" alt="toto"><img class="quote-container" alt="toto"><img class="quote-container" alt="toto"><img class="quote-container" alt="toto"></div></section><footer><div class="footer-line"></div></footer></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/1.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.1f4ee261548cc87ac046.hot-update.js"></script>
+
+</body></html>

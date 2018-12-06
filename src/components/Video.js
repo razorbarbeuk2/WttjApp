@@ -8,7 +8,9 @@ export default class Video extends Component{
             backgroundImage: 'url(' + src + ')',
         } 
         return(
-            <div className="video-container" style={ImgStyle}></div>
+            <div className="video-container" style={ImgStyle}>
+                <div className="background-content" style={ImgStyle}></div>
+            </div>
         )   
     }
 }
