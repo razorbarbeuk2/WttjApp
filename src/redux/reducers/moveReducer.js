@@ -22,7 +22,7 @@ export default (state = defaultState, action) => {
         case MOVE_RIGHT: 
             return {...state, index: state.index + 1}
         case IMPOSE_INDEX:
-            return {...state, index: action.index}
+            return {...state, index: action.index, scrollPos: action.scrollPos}
         default: 
             return state
     }

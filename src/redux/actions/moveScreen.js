@@ -16,9 +16,10 @@ const moveRight = () => ({
     type: MOVE_RIGHT,
 })
 
-const onImpose = (index) => ({
+const onImpose = (index, scrollPos) => ({
     type: IMPOSE_INDEX,
-    index
+    index,
+    scrollPos
 })
 
 export {

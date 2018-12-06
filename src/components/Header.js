@@ -8,53 +8,43 @@ import { moveLeft, moveRight, onImpose } from '../redux/actions/moveScreen';
 const RIGHT = 'right'
 const LEFT = 'left'
 
+const posIndexRange = (scrollPos, tabPos) => {
+    let index = tabPos.reduce((prev, curr) => (Math.abs(curr - scrollPos) < Math.abs(prev - scrollPos) ? curr : prev));
+    return tabPos.findIndex(v => v === index);
+} 
+
 const posLost = (scrollPos, tabPos, dir) => {
     let index = 0;
-    let middlePos = Math.round(tabPos[1]/2)
-    // console.log(middlePos)
-    // console.log(tabPos)
-    // console.log(scrollPos)
-    while (index < tabPos.length) {
+    while (index < tabPos.length){
         if(scrollPos === tabPos[index])
             return index
-        if(scrollPos > tabPos[index]){
-            // console.log('BITCH')
-            break;
-        }
-        index++
-        
+        index++    
     }
-    if ((dir === LEFT) && (scrollPos > tabPos[index]  && scrollPos > Math.round(tabPos[index] + middlePos))){
-        // console.log('INDEX :' )
-        return index + 1
-    }
-    if ((dir === RIGHT) && (tabPos[index] < scrollPos && scrollPos < tabPos[index + 1]))
-        return index
-    return 0
+    index = posIndexRange(scrollPos, tabPos)
+    return (dir === LEFT) ? index + 1 : index;
 }
 
 class Header extends Component {
+    moverMotherShip = (dir, scrollPosCurr, tabPos) => {
+        let value = posLost(scrollPosCurr, tabPos, dir)
+        this.props.onImposeIndex(value, scrollPosCurr)
+    }
+
     moveLeft = (e) => {
-        const { index, tabPos } = this.props
-        let scrollPos = document.getElementById('grid').scrollLeft
-        if(scrollPos > 0){
-            let value = posLost(scrollPos, tabPos, LEFT)
-            // console.log('Value :' + value)
-            if (value > 0)
-                this.props.onImposeIndex(value)
-            if (index > 0) 
-                this.props.onMoveLeft()
+        const { tabPos } = this.props
+        let scrollPosCurr = document.getElementById('grid').scrollLeft
+        if(scrollPosCurr > 0){
+            this.moverMotherShip(LEFT, scrollPosCurr, tabPos)       
+            this.props.onMoveLeft()
         }
         e.preventDefault()
     }
 
     moveRight = (e) => {
         const { tabPos, index } = this.props
-        let scrollPos = document.getElementById('grid').scrollLeft
+        let scrollPosCurr = document.getElementById('grid').scrollLeft
         if(index < tabPos.length){
-            let value = posLost(scrollPos, tabPos, RIGHT)
-            if (value > 0)
-                this.props.onImposeIndex(value)
+            this.moverMotherShip(RIGHT, scrollPosCurr, tabPos)
             this.props.onMoveRight()
         }
         e.preventDefault()   
@@ -100,15 +90,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     onMoveLeft: () => {
-        // console.log('LEFT')
         dispatch(moveLeft())
     },
     onMoveRight: () => {
-        // console.log('RIGHT')
         dispatch(moveRight())
     },
-    onImposeIndex: (index) => {
-        dispatch(onImpose(index))
+    onImposeIndex: (index, scrollPos) => {
+        dispatch(onImpose(index, scrollPos))
     }
 })
 

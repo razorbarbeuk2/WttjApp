@@ -65,6 +65,15 @@ ul{
   overflow: hidden;
   // overflow-x: scroll;
   // overflow-y: hidden;
+  .scollPos{
+    position: absolute;
+    top: 20;
+    left: 50%;
+    p{
+      font-size: 12px;
+      color: white;
+    }
+  }
   .grid-container{
     display: grid;
     min-height: calc(700px - 110px);
