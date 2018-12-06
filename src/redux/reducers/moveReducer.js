@@ -1,9 +1,9 @@
-import { INIT_POS, MOVE_LEFT, MOVE_RIGHT } from '../actionType'
+import { INIT_POS, MOVE_LEFT, MOVE_RIGHT, IMPOSE_INDEX } from '../actionType'
 
 const defaultState = {
     gridWidth: 0,
     index: 0,
-    tabPos: 0,
+    tabPos: [],
     scrollPos: 0,
 }
 
@@ -17,16 +17,12 @@ export default (state = defaultState, action) => {
                 tabPos: action.tabPos,
                 scrollPos: action.scrollPos
             };
-        case MOVE_LEFT: 
-            return {...state, 
-                index: state.index++,
-                scrollPos: state.tabPos[state.index]
-            }
+        case MOVE_LEFT:
+            return {...state, index: state.index - 1}
         case MOVE_RIGHT: 
-            return {...state, 
-                index: state.index--,
-                scrollPos: state.tabPos[state.index]
-            }
+            return {...state, index: state.index + 1}
+        case IMPOSE_INDEX:
+            return {...state, index: action.index}
         default: 
             return state
     }
