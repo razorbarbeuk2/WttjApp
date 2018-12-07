@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Arrow from './Arrow';
-import logo from '../../src/assets/images/wttj-square_green.jpg'
-import { moveLeft, moveRight, onImpose } from '../redux/actions/moveScreen';
+import logo from '../../../src/assets/images/wttj-square_green.jpg'
+import { moveLeft, moveRight, onImpose } from '../../redux/actions/moveScreen';
 
 const RIGHT = 'right'
 const LEFT = 'left'
@@ -32,6 +32,7 @@ class Header extends Component {
 
     moveLeft = (e) => {
         const { tabPos } = this.props
+        console.log(tabPos)
         let scrollPosCurr = document.getElementById('grid').scrollLeft
         if(scrollPosCurr > 0){
             this.moverMotherShip(LEFT, scrollPosCurr, tabPos)       
@@ -44,6 +45,7 @@ class Header extends Component {
         const { tabPos, index } = this.props
         let scrollPosCurr = document.getElementById('grid').scrollLeft
         if(index < tabPos.length){
+            console.log(index)
             this.moverMotherShip(RIGHT, scrollPosCurr, tabPos)
             this.props.onMoveRight()
         }
@@ -52,7 +54,6 @@ class Header extends Component {
 
     render() {
         const { title } = this.props
-
         return (
                 <header className="app-header">
                     <div className="header-container">

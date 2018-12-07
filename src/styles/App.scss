@@ -233,6 +233,13 @@ ul{
   }
 }
 
+.youtube{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%)
+}
+
 .close-btn{
   position: absolute;
   display: block;
@@ -245,7 +252,11 @@ ul{
   line-height: 50px;
   vertical-align: middle; 
   background: $grey-line;
+  transition: background .2s;
   cursor: pointer;
+  &:hover{
+    background: $green-color;
+  }
 }
 
 footer{

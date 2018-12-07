@@ -42,7 +42,7 @@ const data = {
         title: 'Bertrand Uzeel',
         subtitle: 'Co-Founder',
         value: prefixe + 'video/image/1480/151603/small_wttj_video_0679859b-6e84-4549-bbc4-1330eddcac57.jpg',
-        url: 'https://www.youtube.com/embed/1gPC5eOJy8I'
+        url: '1gPC5eOJy8I'
     },
     {
         id: 6, 
@@ -50,7 +50,7 @@ const data = {
         title: 'Kevin Le Roy',
         subtitle: 'CTO',
         value: prefixe + 'video/image/1540/151603/small_wttj_video_267f7b56-911e-4888-9721-085e83f9f479.jpg',
-        url: 'https://www.youtube.com/embed/z09vIvjTw_Y'
+        url: 'z09vIvjTw_Y'
     },
     {
         id: 7, 
@@ -66,7 +66,7 @@ const data = {
         title: 'Anne Claire Soulé',
         subtitle: 'Head of Production',
         value: prefixe + 'video/image/1702/151603/small_wttj_video_c9575808-fd3a-4571-95ef-873af73be887.jpg',
-        url: 'https://www.youtube.com/embed/dE6bBnhcc3U'
+        url: 'dE6bBnhcc3U'
     },
     {
         id: 9, 
@@ -98,7 +98,7 @@ const data = {
         title: 'Audrey Baron',
         subtitle: 'Head of Finance',
         value: prefixe + 'video/image/9474/151602/small_wttj_video_caeaa811-20f9-4d9d-8b3b-6d5aad4d1b0b.jpg',
-        url: 'https://www.youtube.com/embed/u25XbZqByAQ'
+        url: 'u25XbZqByAQ'
     },
     {
         id: 13, 
@@ -122,7 +122,7 @@ const data = {
         title: 'Mélanie Babinot',
         subtitle: 'Business Developer',
         value: prefixe + 'video/image/9401/151602/small_wttj_video_3bbaeeb9-2f2f-4a1b-ac14-e6be495d3bb4.jpg',
-        url: 'https://www.youtube.com/embed/-vNSJY2iT5I'
+        url: '-vNSJY2iT5I'
     },
     {
         id: 16, 
@@ -154,7 +154,7 @@ const data = {
         title: 'Zoé Goldschmidt',
         subtitle: 'Head of Customer Success',
         value: prefixe + 'video/image/9571/151602/small_wttj_video_e447fff6-d541-4f19-a80c-89884ceba007.jpg',
-        url: 'https://www.youtube.com/embed/tQ3VriNUQvk'
+        url: 'tQ3VriNUQvk'
     },
     {
         id: 20, 
@@ -162,7 +162,7 @@ const data = {
         title: 'Thibaut Braghini',
         subtitle: 'Video Project Manager',
         value: prefixe + 'video/image/1756/151603/small_wttj_video_0f3c88ae-317c-4072-9ca3-9bdf8e8ba9cb.jpg',
-        url: 'https://www.youtube.com/embed/4897Lc1sHj0'
+        url: '4897Lc1sHj0'
     },
     {
         id: 21, 
@@ -194,7 +194,7 @@ const data = {
         title: 'Elea Foucher-Creteau',
         subtitle: 'Content Manager',
         value: prefixe + 'video/image/9443/151602/small_wttj_video_394b1772-8b8b-49d7-8c4d-3377f570b13d.jpg',
-        url: 'https://www.youtube.com/embed/X7kecXuFiV8'
+        url: 'X7kecXuFiV8'
     },
     {
         id: 25, 
@@ -226,7 +226,7 @@ const data = {
         title: 'Aurélia Le Bescond',
         subtitle: 'Events & Partnerships Manager',
         value: prefixe + 'video/image/9514/151602/small_wttj_video_5d456bb1-dbde-4be6-a4f4-6f099c1a94e5.jpg',
-        url: 'https://www.youtube.com/embed/J3z-fwLVCac'
+        url: 'J3z-fwLVCac'
     },
     {
         id: 29, 

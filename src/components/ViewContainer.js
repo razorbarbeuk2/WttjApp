@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { initPos, onImpose, onScrolling } from '../redux/actions/moveScreen';
+import { initPos, onImpose } from '../redux/actions/moveScreen';
 import Image from './Image';
 import Quote from './Quote';
 import Video from './Video';
@@ -9,6 +9,7 @@ import Video from './Video';
 const calculatePosition = (gridWidth, offsetView) => {
     let iterator = 0
     let tabPos = []
+    console.log(gridWidth, offsetView)
     offsetView = (offsetView*101)/100;
     while (iterator < (gridWidth - offsetView)){
         tabPos.push(Math.round(iterator))
@@ -19,7 +20,6 @@ const calculatePosition = (gridWidth, offsetView) => {
 }
 
 class ViewContainer extends Component {
-
     constructor(props){
         super(props)
 
@@ -30,16 +30,21 @@ class ViewContainer extends Component {
             viewWidth: 0,
             colGridWidth: 0,
             rowGridWidth: 0,
+            tabPos: [],
         }
     }
 
+    updateStore = () => this.setState({
+        tabPos: calculatePosition(this.state.gridWidth, this.state.viewWidth)
+    }, () => this.props.onInitPos(this.state.gridWidth, 0, this.state.tabPos, 0))
+
+    updateSize = () => this.setState({
+        gridWidth: document.getElementById('grid').scrollWidth,
+        viewWidth: document.getElementById('viewContainer').clientWidth
+    }, () => this.updateStore())
+
     componentDidMount(){
-        this.setState({
-            gridWidth: document.getElementById('grid').scrollWidth,
-            viewWidth: document.getElementById('viewContainer').clientWidth
-        }, () => {
-            this.props.onInitPos(this.state.gridWidth, 0, calculatePosition(this.state.gridWidth, this.state.viewWidth), 0)
-        })
+        this.updateSize()
     }
 
     componentDidUpdate(){
@@ -50,19 +55,19 @@ class ViewContainer extends Component {
             behavior: 'smooth'
         });
     }
-    
+
     render(){
         const { data, col, row, device } = this.props
         
-        this.colGridWdth = 100/col;
-        this.rowGridWidth = 100/row;
+        let colGridWidth = 100/col;
+        let rowGridWidth = 100/row;
         const heightContainerStyle = {minHeight: 'calc(700px - 110px)'}
         if(device === 'xs' || device === 'sm')
             heightContainerStyle.minHeight = 'calc(100vh - 110px)'
             
         const gridContainerStyle = {
-            gridTemplateColumns: 'repeat('+ data.images.length +', '+ this.colGridWdth +'%)',
-            gridTemplateRows: 'repeat('+ row +', '+ this.rowGridWidth +'%)'
+            gridTemplateColumns: 'repeat('+ data.images.length +', '+ colGridWidth +'%)',
+            gridTemplateRows: 'repeat('+ row +', '+ rowGridWidth +'%)'
         }
         
         return (

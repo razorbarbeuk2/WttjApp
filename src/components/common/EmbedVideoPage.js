@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import YouTube from 'react-youtube';
 import CloseBtn from './CloseBtn'
 
 export default class embedVideoPage extends Component{
     render(){
         const {business, title, subtitle, url, isShow } = this.props
-        console.log(this.props)
+        const opts = {
+            width: '560',
+            height: '315',
+            playerVars: {
+              autoplay: 1
+            }
+        };
         
         if(isShow){
             return(
                 <div className="embed-video-page-container">
                     <CloseBtn />
-                    <iframe title="video" width="560" height="315" src={url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <YouTube containerClassName="youtube" videoId={url} opts={opts} onReady={this._onReady} />
                     <div className="infos-embed-video-container">
                        <ul>
                            <li><span>{business}</span></li>
@@ -23,10 +30,8 @@ export default class embedVideoPage extends Component{
             )
         } else {
             return null
-        }
-        
+        }   
     }
-
 }
 
 embedVideoPage.propTypes = {
