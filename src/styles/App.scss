@@ -10,13 +10,24 @@ $height-window: 700px;
 
 @mixin background-gradiant {
   background: rgba(176,176,176,0);
-    background: -moz-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(23%, rgba(176,176,176,0)), color-stop(52%, rgba(114,114,115,0)), color-stop(100%, rgba(12,12,13,1)));
-    background: -webkit-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
-    background: -o-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
-    background: -ms-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
-    background: linear-gradient(to bottom, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0b0b0', endColorstr='#0c0c0d', GradientType=0 );
+  background: -moz-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(23%, rgba(176,176,176,0)), color-stop(52%, rgba(114,114,115,0)), color-stop(100%, rgba(12,12,13,1)));
+  background: -webkit-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
+  background: -o-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
+  background: -ms-linear-gradient(top, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
+  background: linear-gradient(to bottom, rgba(176,176,176,0) 23%, rgba(114,114,115,0) 52%, rgba(12,12,13,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0b0b0', endColorstr='#0c0c0d', GradientType=0 );
+}
+
+@mixin button($color) {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-size: 16px 16px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: $color;
 }
 
 body{
@@ -28,6 +39,7 @@ body{
   padding: 0;
   overflow: hidden;
   font-family: 'Open Sans', sans-serif;
+  color: white;
 }
 
 ul{
@@ -90,15 +102,6 @@ ul{
   overflow: hidden;
   // overflow-x: scroll;
   // overflow-y: hidden;
-  .scollPos{
-    position: absolute;
-    top: 20;
-    left: 50%;
-    p{
-      font-size: 12px;
-      color: white;
-    }
-  }
   .grid-container{
     display: grid;
     min-height: calc(700px - 110px);
@@ -106,62 +109,90 @@ ul{
     grid-auto-columns: 50%;
     grid-auto-flow: column;
     overflow-x: scroll;
-    .image-container, .video-container, .quote-container{
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-      overflow: hidden;
-    }
-    .background-content{
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-position: center center;
-      background-size: cover;
-      -webkit-transition: all .8s;
-      -moz-transition: all .8s;
-      -o-transition: all .8s;
-      transition: all .8s;
-      &:after{
-        content: '';
-        position: absolute;
-        top: 20%;
-        display: block;
-        width: 100%;
-        height: 100%;
-        @include background-gradiant();
-        background-position: 0 50%;
-        opacity: 0;
-        transition: all 0.6s;
-      }
-      &:hover{
-        transform: scale(1.1);
-        &:after{
-          top:0;
-          opacity: 0.8;
-        }
-      }
-    }
-    .zoom{
+  }  
+  .image-container, .video-container, .quote-container{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .background-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    -webkit-transition: all .8s;
+    -moz-transition: all .8s;
+    -o-transition: all .8s;
+    transition: all .8s;
+    &:after{
+      content: '';
       position: absolute;
+      top: 20%;
       display: block;
-      height: 50px;
-      width: 50px;
-      top: calc(50% - 25px);
-      left: calc(50% - 25px);
-      border-radius: 50%;
-      background-size: 16px 16px;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-color: $green-color;
-      transform-origin: center;
-      transform: scale(0);
-      transition: transform 0.4s;
+      width: 100%;
+      height: 100%;
+      @include background-gradiant();
+      background-position: 0 50%;
+      opacity: 0;
+      transition: all 0.6s;
     }
-    .image-container:hover .zoom{
-      transform: scale(1);
+    &:hover{
+      transform: scale(1.1);
+      &:after{
+        top:0;
+        opacity: 0.8;
+      }
+    }
+  }
+  .zoom{
+    position: absolute;
+    @include button($green-color);
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    transform-origin: center;
+    transform: scale(0);
+    transition: transform 0.4s;
+  }
+  .image-container:hover .zoom{transform: scale(1);}
+  .video-container .background-content{
+    &:after{
+      top:5%;
+      opacity: .5;
+    }
+    &:hover{
+      &:after{
+        top:0;
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  .play-container{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    .play-button{
+      @include button($green-color);
+      margin-left: 10px;
+      margin-right: 10px;
+      transform: scale(.9)
+    }
+    p{
+      margin: 0;
+    }
+    .title-video{
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .subtitle-video{
+      font-size: 12px;
     }
   }
 }
