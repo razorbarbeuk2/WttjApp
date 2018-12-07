@@ -1,4 +1,4 @@
-import { MOVE_LEFT, MOVE_RIGHT, INIT_POS, IMPOSE_INDEX } from '../actionType'
+import { MOVE_LEFT, MOVE_RIGHT, INIT_POS, IMPOSE_INDEX, ON_SCROLLING } from '../actionType'
 
 const initPos = (gridWidth, index, tabPos, scrollPos) => ({
     type: INIT_POS,
@@ -22,9 +22,15 @@ const onImpose = (index, scrollPos) => ({
     scrollPos
 })
 
+const onScrolling = (scrollPos) => ({
+    type: ON_SCROLLING,
+    scrollPos
+}) 
+
 export {
     initPos,
     moveLeft,
     moveRight,
-    onImpose
+    onImpose,
+    onScrolling
 }

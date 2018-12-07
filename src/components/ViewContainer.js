@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { initPos, onImpose } from '../redux/actions/moveScreen';
+import { initPos, onImpose, onScrolling } from '../redux/actions/moveScreen';
 import Image from './Image';
 import Quote from './Quote';
 import Video from './Video';
@@ -71,11 +71,10 @@ class ViewContainer extends Component {
                     id="grid" 
                     className="grid-container" 
                     style={{...heightContainerStyle, ...gridContainerStyle}} 
-                    // onMouseDown={(e) => this.onDown(e)} 
-                    // onMouseUp={(e) => this.onUp(e)} 
-                    // onMouseMove={(e) => this.onMove(e)}
-                    // onScroll={() => this.scrollPos()}
-                    // ref={this.grid}
+                    // onScroll={() => {
+                    //     let pos = document.getElementById('grid').scrollLeft
+                    //     this._onScrolling(pos)
+                    // }}
                 >
                 {
                     data.images.map((t, index) => {
@@ -122,7 +121,10 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onImposeIndex: (index, scrollPos) => {
         dispatch(onImpose(index, scrollPos))
-    }
+    },
+    // onScroll: (scrollPos) => {
+    //     dispatch(onScrolling(scrollPos))
+    // }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewContainer)

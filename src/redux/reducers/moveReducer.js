@@ -1,4 +1,4 @@
-import { INIT_POS, MOVE_LEFT, MOVE_RIGHT, IMPOSE_INDEX } from '../actionType'
+import { INIT_POS, MOVE_LEFT, MOVE_RIGHT, IMPOSE_INDEX, ON_SCROLLING } from '../actionType'
 
 const defaultState = {
     gridWidth: 0,
@@ -23,6 +23,8 @@ export default (state = defaultState, action) => {
             return {...state, index: state.index + 1}
         case IMPOSE_INDEX:
             return {...state, index: action.index, scrollPos: action.scrollPos}
+        case ON_SCROLLING:
+            return {...state, scrollPos: action.scrollPos}
         default: 
             return state
     }

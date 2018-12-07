@@ -1,6 +1,7 @@
 $grey-color: rgb(27, 28, 32);
 $green-color: #00c29a;
 $grey-line: #4b4d55;
+$grey-color-quote: rgb(39, 40, 44);
 $grid-row: calc(25%-175);
 $width-window: 850px;
 $height-window: 700px;
@@ -115,7 +116,7 @@ ul{
     display: block;
     width: 100%;
     height: 100%;
-    cursor: pointer;
+    
     overflow: hidden;
   }
   .background-content{
@@ -128,6 +129,7 @@ ul{
     -moz-transition: all .8s;
     -o-transition: all .8s;
     transition: all .8s;
+    cursor: pointer;
     &:after{
       content: '';
       position: absolute;
@@ -195,6 +197,14 @@ ul{
       font-size: 12px;
     }
   }
+  .quote-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: $grey-color-quote;
+    text-align: center;
+  }
 }
 
 footer{
@@ -206,12 +216,11 @@ footer{
   .footer-line{
     position: relative;
     height: 4px;
-    width: 100%;
     background: $grey-line;
     &:after{
       content: '';
       position: absolute;
-      width: 50%;
+      width: 0;
       height: 4px;
       background: $green-color;
     }
