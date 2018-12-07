@@ -82,7 +82,7 @@ class ViewContainer extends Component {
                             case 'image': 
                                 return <Image src={t.value} key={index}/>
                             case 'video': 
-                                return <Video src={t.value} title={t.title} subtitle={t.subtitle} key={index}/>
+                                return <Video dataVideo={t} key={index}/>
                             case 'quote':
                                 return <Quote text={t.value} key={index}/>
                             default: 

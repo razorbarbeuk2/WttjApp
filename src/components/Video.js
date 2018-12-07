@@ -1,22 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { showVideo } from '../redux/actions/showVideo'
 import play from '../assets/images/triangle-right.png'
 
-export default class Video extends Component{
+
+class Video extends Component{
+    _onShow(title, subtitle, url){
+        this.props.onShowBox(title, subtitle, url)
+    }
+
     render(){
-        const { src, title, subtitle } = this.props
+        const { dataVideo } = this.props
         const imgStyle = (src) => ({
             backgroundImage: 'url(' + src + ')',
         })
 
         return(
-            <div className="video-container" style={imgStyle(src)}>
-                <div className="background-content" style={imgStyle(src)}></div>
+            <div className="video-container" style={imgStyle(dataVideo.value)}>
+                <div className="background-content" style={imgStyle(dataVideo.value)} onClick={() => this._onShow(dataVideo.title, dataVideo.subtitle, dataVideo.url)}></div>
                 <div className="play-container">
                     <div className="play-button" style={imgStyle(play)}></div>
                     <div>
-                        <p className="title-video">{title}</p>
-                        <p className="subtitle-video">{subtitle}</p>
+                        <p className="title-video">{dataVideo.title}</p>
+                        <p className="subtitle-video">{dataVideo.subtitle}</p>
                     </div>
                 </div>
             </div>
@@ -25,7 +32,13 @@ export default class Video extends Component{
 }
 
 Video.propTypes = {
-    src: PropTypes.string,
-    title: PropTypes.string,
-    subtitle: PropTypes.string
+    dataVideo: PropTypes.object,
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    onShowBox: (title, subtitle, url) => {
+        dispatch(showVideo(title, subtitle, url))
+    }
+})
+
+export default connect(null, mapDispatchToProps)(Video)
