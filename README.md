@@ -19,19 +19,19 @@ et des comportements de ReactJS que je n'avais pas saisie avant cet exercice.<br
 
 Pour la partie qui à été faite<br>
 <ul>
-<li>- Toute l'intégration graphique</li>
-<li>- Gestion des fleches L/F</li>
-<li>- Gestion des columns en mobile mais il me reste un BUG au niveau des Flèches, mon tab ne se mets à jour...</li>
-<li>- J'utilise le scroll pour se déplacer dans la grille des images je trouve ça plus pratique que le catching</li>
-<li>- L'autoplay des videos Youtube</li>
+<li>Toute l'intégration graphique</li>
+<li>Gestion des fleches L/F</li>
+<li>Gestion des columns en mobile mais il me reste un BUG au niveau des Flèches, mon tab ne se mets à jour...</li>
+<li>J'utilise le scroll pour se déplacer dans la grille des images je trouve ça plus pratique que le catching</li>
+<li>L'autoplay des videos Youtube</li>
 </ul>
 
 Pour la partie que j'aurais aimé faire<br>
 
 Biensur terminé entierement le projet<br>
 <ul>
-<li>- Implémenter le faire des demandes</li>
-<li>- J'avais commmencer à regarder pour faire les Querys pour la gestion Cols/Rows, j'aurais utilisé react-router</li>
+<li>Implémenter le faire des demandes</li>
+<li>J'avais commmencé à regarder pour faire les Querys pour la gestion Cols/Rows, j'aurais utilisé react-router</li>
 </ul>
 
 Liste des packages utilisés
